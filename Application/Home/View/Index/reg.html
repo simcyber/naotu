@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" ; name ="description" content="脑图" />
+<title>{$title}</title>
+<link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+		
+		<div class="col-sm-4 col-sm-offset-4">
+			<form class="form-signin" method="post" action="{:U('Index/do_reg')}">
+			<h2 class="form-signin-heading">注册账号</h2>
+			<label for="email" class="sr-only">Email address</label>
+			<input type="email" id="email" name="email" class="form-control" placeholder="邮箱" required autofocus>
+			<label for="password" class="sr-only">Password</label>
+			<input type="password" id="password" name="password" class="form-control" placeholder="密码" required>
+			<label for="repassword" class="sr-only">Re Password</label>
+			<input type="password" id="repassword" name="repassword" class="form-control" placeholder="确认密码" required>
+			<button class="btn btn-ms btn-primary btn-block" type="submit">注册</button>
+			<br>
+			<a href="{:U('Index/login')}" class="btn btn-ms btn-success btn-block">返回首页</a>
+			</form>
+		</div>
+    </div>
+</body>
+</html>

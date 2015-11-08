@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{$title}</title>
+
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+	<link href="__PUBLIC__/css/sticky-footer-navbar.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{:U('Index/index')}">{$title}-MindMap</a>
+        </div>
+		<ul class="nav navbar-nav navbar-right">
+        <li><a href="{:U('Index/logout')}">退出</a></li>
+		</ul>
+      </div>
+	  
+
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container">
+
+	  
+	  <div class="col-sm-2 col-sm-offset-1">
+		<a href="###" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-success btn-md btn-block">新建</a>
+		<volist name="tags" id="vo">
+			<a href="{:U('Index/index',array('tag'=>urlencode($vo['tag'])))}" class="btn btn-primary btn-sm btn-block">{$vo.tag}</a>
+		</volist>
+	  </div>
+	  
+	  <div class="col-sm-6">
+	  <volist name="rs" id="vo">
+		  <div class="panel panel-info" style="padding:15px;">
+		  <img src="{$vo['imgs']}" width="100%">
+		  <h3><a href="{:U('Edit/index',array('nid'=>$vo['nid']))}">{$vo.title}</a></h3>
+				<p>
+				<span class="label label-info">{$vo.tag}</span>
+				{:is_pub($vo['pub'])}
+				<small class="pull-right">{$vo.datetime}</small>
+				</p>
+		  </div>
+	  </volist>
+	  {$page}
+	  </div>
+	  
+	  <div class="col-sm-3">
+		<div class="panel panel-success">
+		  <div class="panel-heading">引用开源项目</div>
+		  <div class="panel-body">
+			<div class="list-group">
+			  <a href="https://github.com/fex-team/kityminder-editor" class="list-group-item" target="_blank">kityminder-editor</a>
+			  <a href="https://github.com/twbs/bootstrap" class="list-group-item" target="_blank">bootstrap</a>
+			  <a href="http://thinkphp.cn" class="list-group-item" target="_blank">ThinkPHP</a>
+			</div>
+		  </div>
+		</div>
+		
+		<div class="panel panel-success" style="padding:5px;">
+			<div class="panel-heading">本项目主页</div>
+			<div class="panel-body">
+			<a href="https://github.com/simcyber/naotu" target="_blank">naotu</a>
+			</div>
+		</div>
+	  </div>
+	  
+    </div>
+
+    <footer class="footer">
+      <div class="container" align="center">
+        <p class="text-muted">@<a href="http://simcyber.com" target="_blank">SimCyber</a></p>
+      </div>
+    </footer>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="newsinfo">新建脑图</h4>
+      </div>
+	  <div class="modal-body">
+        <div class="container-fluid">
+			<div class="form-signin">
+			<label for="title" class="sr-only">title</label>
+			<input type="text" id="title" name="title" class="form-control" placeholder="标题" required autofocus>
+			<label for="tag" class="sr-only">Password</label>
+			<input type="text" id="tag" name="tag" class="form-control" placeholder="标签" required>
+			
+			<label class="radio-inline">
+			  <input type="radio" name="pub" class="pub" value="1" checked> 公开
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="pub" class="pub" value="0"> 保密
+			</label>
+			<hr>
+			<button class="btn btn-ms btn-primary btn-block" id="add_new">新建</button>
+			</div>
+		</div>
+	  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+	<script>
+		$("#add_new").click(function(){
+			var title=$("#title").val();
+			var tag=$("#tag").val();
+			var pub=$("input[name='pub']:checked").val();
+			$.post("{:U('Index/add_new')}",{tag:tag,title:title,pub:pub},function(result){
+				$("#newsinfo").text("新建成功，正在跳转!");
+				window.location.href=result.url;
+			 });
+		 });
+	</script>
+	
+  </body>
+</html>

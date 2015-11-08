@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" ; name ="description" content="创想科技" />
+<title>{$title}</title>
+
+<style type="text/css">
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,input,textarea,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+ list-style:none;
+}
+div#header {width:100%; margin:0 auto; background-color:#0091ff;text-align: center;height:60px;position:relative;}
+div#item1 {width:100%; margin:0 auto; background-color:#0091ff;text-align: center;height:300px;position:relative;}
+div#item1_img{width:1132px;height: 300px;margin:0 auto;background:url(__PUBLIC__/img/img1.png);text-align: center;position:relative;;z-index: 999}
+</style>
+<link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color:#FAFFFE;">
+<div id="item1">
+ <div id="item1_img">
+
+<!--
+<a href="bbs/"><div id="navigateButton_bbs" class="change"></div></a>
+<a href="about/"><div id="navigateButton_About" class="change"></div></a>
+-->
+    </div>
+</div>
+<div align="center" style="background-color:#009fff;">
+<form class="form-inline" method="post" action="{:U('Index/do_login')}">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" name="email" id="email" placeholder="username@example.com">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-success">登录</button>
+  <a href="{:U('Index/reg')}" class="btn btn-default">注册</a>
+  <a href="{:U('Demo/index')}" class="btn btn-danger">先试试看</a>
+</form>
+</div>
+<div align="center">
+<h3><strong>随便看看</strong></h3>
+</div>
+<php>
+$rs=M('naotu_data')->where("`pub` = 1")->limit(6)->select();
+</php>
+<div class="container">
+	<div class="col-sm-10 col-sm-offset-1">
+	  <volist name="rs" id="vo">
+	  <div class="col-sm-4" style="padding:10px;">
+		  <div class="panel panel-info" style="padding:15px;">
+		  <img src="{$vo['imgs']}" width="100%" >
+		  <h3><a href="{:U('Demo/index',array('nid'=>$vo['nid']))}">{$vo.title}</a></h3>
+				<p>
+				<span class="label label-info">{$vo.tag}</span>
+				{:is_pub($vo['pub'])}
+				<small class="pull-right">{$vo.datetime}</small>
+				</p>
+		  </div>
+		</div>
+	  </volist>
+	</div>
+</div>
+
+
+</body>
+</html>

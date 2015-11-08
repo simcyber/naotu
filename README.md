@@ -11,4 +11,6 @@ ThinkPHP和百度kityminder-editor编写的脑图工具
 2. [bootstrap](https://github.com/twbs/bootstrap)
 3. [ThinkPHP](http://thinkphp.cn)
 
-##如有问题和建议，欢迎在[issues](https://github.com/simcyber/naotu/issues)中提交
+## 如有问题和建议，欢迎在[issues](https://github.com/simcyber/naotu/issues)中提交
+
+## 演示地址 [NaoTu](http://naotu.nextbig.net/)

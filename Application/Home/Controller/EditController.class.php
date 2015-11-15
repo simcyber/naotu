@@ -30,4 +30,9 @@ class EditController extends Controller {
 		$data['msg']="保存成功！";
 		$this->ajaxReturn($data);
 	}
+	
+	public function add(){
+		
+		
+	}
 }

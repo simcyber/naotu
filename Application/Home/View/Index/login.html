@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" ; name ="description" content="创想科技" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" ; name ="description" content="在线编辑思维脑图，思维脑图，kityminder-editor构建，ThinkPHP，用PHP实现百度kityminder-editor" />
 <title>{$title}</title>
 
 <style type="text/css">
@@ -57,7 +57,7 @@ $rs=M('naotu_data')->where("`pub` = 1")->limit(6)->select();
 	  <div class="col-sm-4" style="padding:10px;">
 		  <div class="panel panel-info" style="padding:15px;">
 		  <img src="{$vo['imgs']}" width="100%" >
-		  <h3><a href="{:U('Demo/index',array('nid'=>$vo['nid']))}">{$vo.title}</a></h3>
+		  <h3><a href="{:U('Demo/tpl',array('nid'=>$vo['nid']))}">{$vo.title}</a></h3>
 				<p>
 				<span class="label label-info">{$vo.tag}</span>
 				{:is_pub($vo['pub'])}
@@ -68,7 +68,16 @@ $rs=M('naotu_data')->where("`pub` = 1")->limit(6)->select();
 	  </volist>
 	</div>
 </div>
-
-
+<div style="display:none">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c315b92fabf00f4668b30b4b95b4209e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</div>
 </body>
 </html>

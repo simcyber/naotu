@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{$title}</title>
+	<link rel="stylesheet" href="__PUBLIC__/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="__PUBLIC__/bower_components/kityminder-core/src/kityminder.css" />
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="__PUBLIC__/bower_components/kity/dist/kity.min.js"></script>
+</head>
+<body>
+
+<div class="page-header col-md-8 col-md-offset-2">
+  <h1>{$rs.title}<small><a href="{:U('Index/login')}" class="btn btn-info">登录</a></small></h1>
+</div>
+
+<div id="minder-view" class=" col-md-8 col-md-offset-2" style="height:500px" type="application/kityminder" minder-data-type="json">
+{$rs['body']}
+</div>
+
+</body>
+
+<script src="__PUBLIC__/bower_components/kityminder-core/dist/kityminder.core.min.js"></script>
+<script type="text/javascript">
+    // 创建 km 实例
+    /* global kityminder */
+    var km = window.km = new kityminder.Minder();
+    km.setup('#minder-view');
+    km.disable();
+    km.execCommand('hand');
+</script>
+
+</html>

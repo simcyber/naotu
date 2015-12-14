@@ -13,4 +13,4 @@ ThinkPHP和百度kityminder-editor编写的脑图工具
 
 ## 如有问题和建议，欢迎在[issues](https://github.com/simcyber/naotu/issues)中提交
 
-## 演示地址 [NaoTu](http://naotu.nextbig.net/)
+## 演示地址 [NaoTu](http://naotu.xyz/)

@@ -13,8 +13,8 @@ SET time_zone = "+00:00";
 --
 -- 数据库: `naotu`
 --
-CREATE DATABASE IF NOT EXISTS `naotu` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `naotu`;
+CREATE DATABASE IF NOT EXISTS `app_naotuxyz` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `app_naotuxyz`;
 
 -- --------------------------------------------------------
 
